@@ -1,0 +1,31 @@
+h1{
+    text-align: center;
+    font-size: 100px;
+}
+.container{
+    height: 65px;
+    width: inherit;
+    text-align: center;
+    font-size: 50px;
+}
+header{
+    background-color: aquamarine;
+}
+.col-md-2{
+    border: solid;
+    text-align-last: center;
+}
+.col-md-6{
+    border: solid;
+    width: inherit;
+    height: 100px;
+}
+.text{
+    width: inherit;
+    height: 90px;
+    top: 5px;
+}
+.btn-secondary{
+    padding: 15px 40px;
+    margin: 19px 10px;
+}
