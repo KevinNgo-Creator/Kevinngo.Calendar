@@ -19,13 +19,35 @@ header{
     border: solid;
     width: inherit;
     height: 100px;
+    padding: 0px;
+    background-color: #d3d3d3;
 }
 .text{
     width: inherit;
     height: 90px;
     top: 5px;
+    background: transparent;
 }
 .btn-secondary{
     padding: 15px 40px;
     margin: 19px 10px;
+}
+.saveBtn {
+    border-left: 1px solid black;
+    background-color: #06AED5;
+    color: white;
+    margin: 15px;
+    padding: 15px 30px;
+}
+.saveBtn i:hover {
+    font-size: 20px;
+    transition: all .3s ease-in-out;
+}
+.present {
+    background-color: #ff6961;
+    color: white;
+}
+.future {
+    background-color: #77dd77;
+    color: white;
 }

@@ -42,17 +42,21 @@ function renderTime(){
 }
 renderTime();
 
-$(function() {
-    $('#save').on('click' , function(){
-        alert("clicked")
-    });
-})
-// function visBox(){
-//     var textBox = document.getElementById("text-box")
-//     textBox.style.display = textBox.style.display === 'none' ? '' : 'none';
-// }
+// moment().format('MMMM Do YYYY, h:mm:ss a');
 
-// $("text-box").toggle();
-// $("input").hover(
-//     visBox()
-// )
+// var now = moment();
+
+// $('time').each(function(i, e) {
+//     var time = moment($(e).attr('datetime'));
+
+//     if(now.diff(time, 'days') <= 1) {
+//         $(e).html('<span>' + time.from(now) + '</span>');
+//     }
+// });
+
+$(document).ready(function(){
+    $("button").click(function(){
+      $("input").toggle();
+    });
+  });
+  
