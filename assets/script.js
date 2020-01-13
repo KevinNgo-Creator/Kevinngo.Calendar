@@ -1,3 +1,4 @@
+var t0900 = document.getElementsByName('one')
 // Render Time
 function renderTime(){
     var mydate = new Date();
@@ -37,26 +38,50 @@ function renderTime(){
     var myClock = document.getElementById("clockDisplay")
     myClock.textContent = "" +dayarray[day]+ " " +daym+ " " +montharray[month]+ " " +year+ " - " +h+ ":" +m+ ":" +s;
     myClock.innerText = "" +dayarray[day]+ " " +daym+ " " +montharray[month]+ " " +year+ " - " +h+ ":" +m+ ":" +s;
-
     setTimeout("renderTime()", 1000);
 }
-renderTime();
+    const table = document.querySelector('#time-table')
+    const times = [0900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700]
+    const timeSlots = times.map(time => {
+    return `<div class="col-md-1"></div>
+            <div class="col-md-2" class="${time}">${time}</div>
+            <div class="col-md-6" style="padding: 0px;">
+                <input class="text" id="text ${time}" type ="text" disabled><p></p></input></div>
+            <div class="col-md-2">
+                <button class="saveBtn" id="${time}" type="button">Unlock/Save</button></div>
+            <div class="col-md-1"></div>`
+        })
 
-// moment().format('MMMM Do YYYY, h:mm:ss a');
+table.innerHTML = timeSlots.join(" ")
 
-// var now = moment();
-
-// $('time').each(function(i, e) {
-//     var time = moment($(e).attr('datetime'));
-
-//     if(now.diff(time, 'days') <= 1) {
-//         $(e).html('<span>' + time.from(now) + '</span>');
+$(document).on('click', localStore());
+    function localStore(){
+        // var inputField = document.getElementById("text");
+        // localStorage.setItem("text", inputField)
+        console.log("true")
+    }
+//     function persistInput(input){
+//         var key = "input-" + localStorage.second;
+//         var storedValue = localStorage.getItem(key);
+//         if (storedValue)
+//             input.value = storedValue;
+//         input.addEventListener('input', function(){
+//             localStorage.setItem(key, input.value);
+//         });
 //     }
-// });
+//     var inputElement = document.getElementById("times");
+//         persistInput(inputElement);
 
-$(document).ready(function(){
-    $("button").click(function(){
-      $("input").toggle();
-    });
-  });
-  
+//   const text = document.querySelector(`#text-${event.target.id}`)
+
+// //input box
+//     var realTime = parseInt(h+""+m)
+//     console.log(realTime)
+//     var scheduleTime = parseInt($(".time").text());
+//     console.logs()
+
+//     function presentTime(){
+//         if( timeLine <= realTime){
+//             $("#0900").css({"background-color":"#ff6961"});
+//         }
+//     } presentTime()
