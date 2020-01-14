@@ -1,4 +1,3 @@
-var t0900 = document.getElementsByName('one')
 // Render Time
 function renderTime(){
     var mydate = new Date();
@@ -34,54 +33,42 @@ function renderTime(){
         if(s < 10){
             s = "0" + s;
         }
-    
+
     var myClock = document.getElementById("clockDisplay")
     myClock.textContent = "" +dayarray[day]+ " " +daym+ " " +montharray[month]+ " " +year+ " - " +h+ ":" +m+ ":" +s;
     myClock.innerText = "" +dayarray[day]+ " " +daym+ " " +montharray[month]+ " " +year+ " - " +h+ ":" +m+ ":" +s;
     setTimeout("renderTime()", 1000);
+
+    
+//time
+    var hours = moment().format("HHmm"); 
+    console.log(hours)
+    var scheduleTimes = $(":text").attr("data-time");
+    console.log(scheduleTimes)
+    function timeColor(){
+        if(hours <= scheduleTimes){
+            $(".text").addClass("present")
+            console.log("true")
+        }
+    } timeColor()
 }
-    const table = document.querySelector('#time-table')
-    const times = [0900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700]
-    const timeSlots = times.map(time => {
-    return `<div class="col-md-1"></div>
-            <div class="col-md-2" class="${time}">${time}</div>
-            <div class="col-md-6" style="padding: 0px;">
-                <input class="text" id="text ${time}" type ="text" disabled><p></p></input></div>
-            <div class="col-md-2">
-                <button class="saveBtn" id="${time}" type="button">Unlock/Save</button></div>
-            <div class="col-md-1"></div>`
-        })
+const table = document.querySelector('#time-table')
+const times = [0900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700]
+const timeSlots = times.map(time => {
+return `<div class="col-md-1"></div>
+        <div class="col-md-2" class="${time}">${time}</div>
+        <div class="col-md-6" style="padding: 0px;">
+            <input class="text" id="text" data-time="${time}" type ="text"><p></p></input></div>
+        <div class="col-md-2">
+            <button class="saveBtn" data-time="${time}" type="button">Unlock/Save</button></div>
+        <div class="col-md-1"></div>`
+    });
 
 table.innerHTML = timeSlots.join(" ")
-
-$(document).on('click', localStore());
-    function localStore(){
-        // var inputField = document.getElementById("text");
-        // localStorage.setItem("text", inputField)
-        console.log("true")
-    }
-//     function persistInput(input){
-//         var key = "input-" + localStorage.second;
-//         var storedValue = localStorage.getItem(key);
-//         if (storedValue)
-//             input.value = storedValue;
-//         input.addEventListener('input', function(){
-//             localStorage.setItem(key, input.value);
-//         });
-//     }
-//     var inputElement = document.getElementById("times");
-//         persistInput(inputElement);
-
-//   const text = document.querySelector(`#text-${event.target.id}`)
-
-// //input box
-//     var realTime = parseInt(h+""+m)
-//     console.log(realTime)
-//     var scheduleTime = parseInt($(".time").text());
-//     console.logs()
-
-//     function presentTime(){
-//         if( timeLine <= realTime){
-//             $("#0900").css({"background-color":"#ff6961"});
-//         }
-//     } presentTime()
+$(document).on("click",".saveBtn", handleClick);
+function handleClick(e){
+    var value = $(this).attr("data-time");
+    var inputField = $(`input[data-time=${value}]`);
+    localStorage.setItem("inputValue", inputField.val())
+    console.log(value)
+};
